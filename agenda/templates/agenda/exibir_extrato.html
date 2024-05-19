@@ -1,0 +1,7 @@
+<html>
+    <h1>Nome: {{extrato.nome}}</h1>
+    <p>Tipo: {{extrato.tipo}}</p>
+    <p>Valor: R${{extrato.valor}}</p>
+    {% if extrato.descricao %}<p>Descrição {{extrato.descricao}}</p> {% endif %}
+    <p>Parcela: {{extrato.parcelas}}</p>
+</html>

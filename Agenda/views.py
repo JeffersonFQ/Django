@@ -1,20 +1,22 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.template import loader
-from agenda.models import extratos
+from agenda.models import Evento
 
-# Criação de Views
-def index(request):
-    return HttpResponse("Olá Mundo!")
+
+def Home(request):
+    return render(request=request, template_name="agenda/Home.html")
+
+# Exibir todos os lançamentos
+def Exibir_Extratos(request):
+    # Buscar lançamentos por tipo
+    extratos = Evento.objects.all()
+    # Exibir em um template
+    return render(request=request, context={"extratos":extratos}, template_name="agenda/exibir_extratos.html")
   
-
-def exibir_extrato(request):
+# Exibir UM único lançamento
+def Exibir_Extrato(request, id):
     # Selecionar objeto na lista
-    extrato = extratos[0]
-    # # Encontrar template
-    # template = loader.get_template("agenda/exibir_extrto.html")
-    # # Renderizar template
-    # rendered_template = template.render(context={"extrato":extrato}, request=request)
-    # # Retorna o valor pra API
-    # return HttpResponse(rendered_template)
+    extrato = Evento.objects.get(id=id)
+    # Renderizar Template
     return render(request=request, context={"extrato":extrato}, template_name="agenda/exibir_extrato.html")

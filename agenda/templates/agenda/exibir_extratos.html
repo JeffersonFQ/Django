@@ -1,0 +1,27 @@
+<html>
+    <table width="467" border="1px">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">nome</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Parcela</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ação</th>
+          </tr>
+        </thead>
+        <tbody>   
+            {% for extrato in extratos %}
+                <td>{{extrato.id}}</td>
+                <td>{{extrato.nome}}</td>
+                <td>{{extrato.tipo.nome}}</td>
+                <td>{{extrato.descricao}}</td>
+                <td>{{extrato.parcela}}</td>
+                <td>{{extrato.status}}</td>
+                <td><a href="{% url 'Exibir_Extrato' extrato.id %}">Detalhes</a></td>
+                <tr>
+            {% endfor %}            
+        </tbody>
+      </table>
+</html>

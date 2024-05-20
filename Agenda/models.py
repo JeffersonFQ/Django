@@ -14,5 +14,5 @@ class Evento(models.Model):
     tipo = models.ForeignKey(Tipo, on_delete=models.SET_NULL, null=True)
     valor = models.DecimalField(max_digits=10, decimal_places=2)
     descricao = models.CharField(max_length=250)
-    parcela = models.IntegerField(blank=True) 
+    parcela = models.IntegerField(blank=True, default=1) 
     status = models.CharField(max_length=20)
